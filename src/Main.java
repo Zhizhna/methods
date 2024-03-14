@@ -1,15 +1,15 @@
+import java.time.LocalDate;
+
 public class Main {
-    public static void task2() {
-        System.out.println("Task 2");
-        byte clientOS2 = 0;
-        short clientDeviceYear = 2015;
-        if (clientOS2 == 0) {
-            if (clientDeviceYear >= 2015) {
+    public static void osManager(int os, int year) {
+        int currentYear = LocalDate.now().getYear();
+        if (os == 0) {
+            if (year >= currentYear) {
                 System.out.println("Установите версию приложения для iOS по ссылке");
             } else {
                 System.out.println("Установите облегченную версию приложения для iOS по ссылке");
             }
-        } else if (clientDeviceYear >= 2015) {
+        } else if (year >= currentYear) {
             System.out.println("Установите версию приложения для Android по ссылке");
         } else {
             System.out.println("Установите облегченную версию приложения для Android по ссылке");
@@ -22,7 +22,7 @@ public class Main {
     public static void printPosResult(){
         System.out.println("является високосны");
     }
-    public static void task1(int number) {
+    public static void leapYear(int number) {
         if (number >= 1584) {
             if (number % 4 == 0) {
                 printPosResult();
@@ -35,32 +35,25 @@ public class Main {
             printNegResult();
         }
     }
-    public static void task4() {
-        System.out.println("Task 4");
-        int deliveryDistance = 95;
-        byte timeForDelivery = 0;
-        if (deliveryDistance < 20) {
-            //System.out.println("Доставка займет 1 день");
-            //можно сделать два исколючения, чтобы было грамматно с точки зрения языка
-            timeForDelivery = 1;
-        } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
-            timeForDelivery = 2;
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
-            timeForDelivery = 3;
-        } else if (deliveryDistance >= 100) {
-            //System.out.println("доставки нет");
-            timeForDelivery = 0;
-        }
-        if (timeForDelivery > 0) {
-            System.out.println("Потребуется дней: " + timeForDelivery);
+    public static void bankCardDelivery(int distance) {
+        if (distance < 20) {
+            System.out.println("Потребуется дней: 1");
+        } else if (distance < 60) {
+            System.out.println("Потребуется дней: 2");
+        } else if (distance < 100) {
+            System.out.println("Потребуется дней: 3");
         } else {
-            System.out.println("доставки нет");
+            System.out.println("Доставки нет");
         }
     }
 
     public static void main(String[] args) {
         int year = 2024;
-        task1(year);
-
+        leapYear(year);
+        byte clientOS = 0;
+        int clientYear = 2020;
+        osManager(clientOS, clientYear);
+        int deliveryDistance = 95;
+        bankCardDelivery(deliveryDistance);
     }
 }
